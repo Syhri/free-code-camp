@@ -1,1 +1,2 @@
-# Learning Web Development in freeCodeCamp
+# Learning JavaScript by building projects in freeCodeCamp
+
