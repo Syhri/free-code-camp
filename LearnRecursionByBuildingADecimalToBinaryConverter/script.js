@@ -4,9 +4,14 @@ const result = document.getElementById("result");
 
 // a function that convert a decimal to binaey number
 const decimalToBinary = (input) => {
-  const inputs = [];
+  /*const inputs = [];
   const quotients = []; // hasil bagi
   const remainders = []; // sisa (sisa bagi)
+
+  if (input === 0) {
+    result.innerText = "0";
+    return;
+  }
 
   while (input > 0) {
     const quotient = Math.floor(input / 2);
@@ -19,8 +24,28 @@ const decimalToBinary = (input) => {
   }
 
   console.log("Inputs: ", inputs);
-  ~console.log("Quotients: ", quotients);
+  console.log("Quotients: ", quotients);
   console.log("Remainders: ", remainders);
+
+  result.innerText = remainders.reverse().join("");*/
+  /*let binary = "";
+
+  if (input === 0) {
+    binary = "0";
+  }
+
+  while (input > 0) {
+    binary = (input % 2) + binary;
+    input = Math.floor(input / 2);
+  }
+
+  result.innerText = binary;*/
+
+  if (input === 0 || input === 1) {
+    return String(input);
+  } else {
+    return decimalToBinary(Math.floor(input / 2)) + (input % 2);
+  }
 };
 
 // Function to check the user input when click the convert btn
@@ -35,7 +60,7 @@ const userCheckInput = () => {
     return;
   }
 
-  decimalToBinary(parseInt(numberInput.value));
+  result.textContent = decimalToBinary(parseInt(numberInput.value));
   numberInput.value = "";
 };
 
