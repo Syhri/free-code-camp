@@ -22,7 +22,7 @@ const animationData = [
 
 // a function that convert a decimal to binaey number
 const decimalToBinary = (input) => {
-  //* First Algorithm: Excessive Memory Usage, Inefficient
+  //*  First Algorithm: Excessive Memory Usage, Inefficient
   // const inputs = [];
   // const quotients = []; // hasil bagi
   // const remainders = []; // sisa (sisa bagi)
@@ -63,7 +63,7 @@ const decimalToBinary = (input) => {
   // result.innerText = binary;*/
 
   //* Third Algorithm: Compact and Recursive, Call Stack Constraints
-  if (input === 0 || input === 1) {
+    if (input === 0 || input === 1) {
     return String(input);
   } else {
     return decimalToBinary(Math.floor(input / 2)) + (input % 2);
@@ -73,9 +73,15 @@ const decimalToBinary = (input) => {
 const showAnimation = () => {
   result.innerText = "Call Stack Animation";
 
-  // animationData.forEach((obj) => {
-  //   obj.inputVal;
-  // });
+  animationData.forEach((obj) => {
+    setTimeout(() => {
+      animationContainer.innerHTML += `
+        <p id="${obj.inputVal}">
+          decimalToBinary(${obj.inputVal})
+        </p>
+      `;
+    }, obj.addElDelay);
+  });
 };
 
 // Function to check the user input when click the convert btn
