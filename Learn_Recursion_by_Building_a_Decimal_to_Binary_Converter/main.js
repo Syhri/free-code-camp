@@ -1,3 +1,5 @@
+// Baris kode yang clean
+
 const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
@@ -26,7 +28,6 @@ const animationData = [
   },
 ];
 
-// a function that convert a decimal to binaey number
 const decimalToBinary = (input) => {
   if (input === 0 || input === 1) {
     return String(input);
@@ -61,11 +62,9 @@ const showAnimation = () => {
   }, 20000);
 };
 
-// Function to check the user input when click the convert btn
 const userCheckInput = () => {
   const inputInt = parseInt(numberInput.value);
 
-  // Baris kode yang mengecek apakah inputan user itu kosong, angka atau bukan
   if (!numberInput.value || isNaN(inputInt) || inputInt < 0) {
     alert("Please provide a decimal number greater than or equal to 0");
     return;
@@ -82,7 +81,6 @@ const userCheckInput = () => {
 
 convertBtn.addEventListener("click", userCheckInput);
 
-// users no longer need for click the convert btn, just pressed the Enter/Return kerword
 numberInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     userCheckInput();
