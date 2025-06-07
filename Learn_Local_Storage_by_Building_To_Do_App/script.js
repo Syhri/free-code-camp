@@ -13,14 +13,24 @@ const descriptionInput = document.getElementById("description-input");
 const taskData = JSON.parse(localStorage.getItem("data")) || []; // untuk menyimpan semua data yang berhubungan termasuk title, dls. dan men-display
 let currentTask = {}; // variabel ini digunakan untuk melacak saat mengedit dan men-delete
 
+const removeSpecialChars = ( str ) => {
+  return str.replce(/[^a-zA-Z0-9\s]+/g, "");
+}
+
 const addOrUpdateTask = () => {
+
+  if(!titleInput.value.trim()) {
+    alert("Please provide a title.");
+    return;
+  }
+
   const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
 
   const taskObj = {
-    id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-    title: titleInput.value,
+    id: `${removeSpecialChars(titleInput.value).toLowerCase().split(" ").join("-")}-${Date.now()}`,
+    title: removeSpecialChars(titleInput.value),
     date: dateInput.value,
-    description: descriptionInput.value,
+    description: removeSpecialChars(descriptionInput.value),
   };
 
   if (dataArrIndex === -1) {
